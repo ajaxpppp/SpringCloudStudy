@@ -1,0 +1,15 @@
+server:
+  port: 80
+
+
+eureka:
+  client:
+    #注册进Eurekaservice
+    register-with-eureka: true
+    #是否从EurekaServer抓取已有的注册信息
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka,http://eureka7002.com:7002/eureka
+logging:
+  level:
+    com.shenjun.springcloud.service.PaymentFeignService: debug

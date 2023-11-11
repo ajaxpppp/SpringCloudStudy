@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mapper文件相当于DAO接口的'实现类',namespace属性要指定DAO接口的名称-->
+<!--DAO data access object 数据访问对象-->
+<!--DTO data transfer object 数据连接对象-->
+<mapper namespace="com.shenjun.springcloud.dao.PaymentDao">
+
+    <insert id="create" parameterType="com.shenjun.springcloud.entities.Payment" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into payment(serial)
+        values (#{serial});
+    </insert>
+
+    <resultMap id="BaseResultMap" type="com.shenjun.springcloud.entities.Payment">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <id column="serial" property="serial" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getPaymentById" parameterType="long" resultMap="BaseResultMap">
+        select *
+        from payment
+        where id = #{id};
+    </select>
+
+
+</mapper>
